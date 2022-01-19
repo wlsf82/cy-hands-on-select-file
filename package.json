@@ -1,0 +1,21 @@
+{
+  "name": "cy-hands-on-select-file",
+  "version": "1.0.0",
+  "description": "Sample project to demonstrate how to use the `selectFile` functionality available on Cypress v9.3.0.",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run"
+  },
+  "keywords": [
+    "Cypress.io",
+    "cy.handsOn",
+    "selectFile",
+    "Talking About Testing",
+    "Testing"
+  ],
+  "author": "Walmyr Filho <wlsf82@gmail.com> (https://walmyr.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^9.3.1"
+  }
+}
