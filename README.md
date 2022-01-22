@@ -14,8 +14,6 @@ Run `npm install` (or `npm i` for the short version) to install the dev dependen
 
 ## Tests
 
-> **Note:** Before running the tests, make a copy of the `cypress.env.example.json` file as `cypress.env.json`, and update it with valid credentials.
-
 Run `npm test` (or `npm t` for the short version) to run the test in headless mode.
 
 Or, run `npm run cy:open` to open Cypress in interactive mode.
