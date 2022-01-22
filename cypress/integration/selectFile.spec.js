@@ -5,7 +5,7 @@ describe('cy.handsOn(".selectFile")', () => {
     cy.get('input[type="file"]')
       .selectFile('cypress/fixtures/example.json')
       .then(input => {
-        expect(input[0].value).to.contain('example.json')
+        expect(input[0].files[0].name).to.equal('example.json')
       })
   })
 
@@ -13,7 +13,7 @@ describe('cy.handsOn(".selectFile")', () => {
     cy.get('input[type="file"]')
       .selectFile('cypress/fixtures/example.json', { action: 'drag-drop' })
       .then(input => {
-        expect(input[0].value).to.contain('example.json')
+        expect(input[0].files[0].name).to.equal('example.json')
       })
   })
 
@@ -23,7 +23,19 @@ describe('cy.handsOn(".selectFile")', () => {
     cy.get('input[type="file"]')
       .selectFile('@exampleFile')
       .then(input => {
-        expect(input[0].value).to.contain('example.json')
+        expect(input[0].files[0].name).to.equal('example.json')
+      })
+  })
+
+  it('selects a file for upload using an aliased fixture (workaround)', () => {
+    cy.fixture('example.json', { encoding: null }).as('exampleFile')
+    cy.get('input[type="file"]')
+      .selectFile({
+        contents: '@exampleFile',
+        fileName: 'example.json'
+      })
+      .then(input => {
+        expect(input[0].files[0].name).to.equal('example.json')
       })
   })
 
@@ -34,11 +46,8 @@ describe('cy.handsOn(".selectFile")', () => {
         'cypress/fixtures/example.txt'
       ])
       .then(input => {
-        console.log(input)
-        expect(input[0].attributes.multiple.ownerElement.files[0].name)
-          .to.equal('example.json')
-        expect(input[0].attributes.multiple.ownerElement.files[1].name)
-          .to.equal('example.txt')
+        expect(input[0].files[0].name).to.equal('example.json')
+        expect(input[0].files[1].name).to.equal('example.txt')
       })
   })
 
@@ -49,11 +58,8 @@ describe('cy.handsOn(".selectFile")', () => {
         'cypress/fixtures/example.txt'
       ], { action: 'drag-drop' })
       .then(input => {
-        console.log(input)
-        expect(input[0].attributes.multiple.ownerElement.files[0].name)
-          .to.equal('example.json')
-        expect(input[0].attributes.multiple.ownerElement.files[1].name)
-          .to.equal('example.txt')
+        expect(input[0].files[0].name).to.equal('example.json')
+        expect(input[0].files[1].name).to.equal('example.txt')
       })
   })
 })
