@@ -1,7 +1,7 @@
 describe('cy.handsOn(".selectFile")', () => {
   beforeEach(() => cy.visit('./index.html'))
 
-  it('selects a file for upload', () => {
+  it('selects a file', () => {
     cy.get('input[type="file"]')
       .selectFile('cypress/fixtures/example.json')
       .then(input => {
@@ -9,7 +9,7 @@ describe('cy.handsOn(".selectFile")', () => {
       })
   })
 
-  it('selects a file for upload simulating a drag-and-drop', () => {
+  it('selects a file simulating a drag-and-drop', () => {
     cy.get('input[type="file"]')
       .selectFile('cypress/fixtures/example.json', { action: 'drag-drop' })
       .then(input => {
@@ -26,7 +26,7 @@ describe('cy.handsOn(".selectFile")', () => {
       })
   })
 
-  it('selects a file for upload using an aliased fixture (workaround)', () => {
+  it('selects a file using an aliased fixture passed on content\'s property', () => {
     cy.fixture('example.json', { encoding: null }).as('exampleFile')
     cy.get('input[type="file"]')
       .selectFile({
@@ -38,7 +38,7 @@ describe('cy.handsOn(".selectFile")', () => {
       })
   })
 
-  it('selects multiple files for upload', () => {
+  it('selects multiple files', () => {
     cy.get('input[type="file"]')
       .selectFile([
         'cypress/fixtures/example.json',
@@ -50,7 +50,7 @@ describe('cy.handsOn(".selectFile")', () => {
       })
   })
 
-  it('selects multiple files for upload simulating a drag-and-drop', () => {
+  it('selects multiple files simulating a drag-and-drop', () => {
     cy.get('input[type="file"]')
       .selectFile([
         'cypress/fixtures/example.json',
