@@ -17,8 +17,7 @@ describe('cy.handsOn(".selectFile")', () => {
       })
   })
 
-  // Depends on https://github.com/cypress-io/cypress/issues/19803 to be fixed.
-  it.skip('selects a file for upload using an aliased fixture', () => {
+  it('selects a file using an aliased fixture', () => {
     cy.fixture('example.json', { encoding: null }).as('exampleFile')
     cy.get('input[type="file"]')
       .selectFile('@exampleFile')
